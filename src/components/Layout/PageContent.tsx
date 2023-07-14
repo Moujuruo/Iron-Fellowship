@@ -10,12 +10,14 @@ export function PageContent(props: PageContentProps) {
   const { children, isPaper, viewHeight } = props;
 
   return (
-    <Container
+    <Container id="container"
       component={isPaper ? Paper : "div"}
       maxWidth={"xl"}
       sx={[
         (theme) => ({
+          color: theme.palette.primary.contrastText,
           position: "relative",
+          backgroundColor: theme.palette.background.paper,
           // borderRadius: 8,
           borderRadius: isPaper && !viewHeight ? theme.shape.borderRadius : 0,
           borderBottomLeftRadius: 0,

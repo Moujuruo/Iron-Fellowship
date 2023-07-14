@@ -38,7 +38,11 @@ export function CreateCampaignDialog(props: CreateCampaignDialogProps) {
 
   return (
     <Dialog open={open} onClose={() => handleClose}>
-      <DialogTitle>Create a Campaign</DialogTitle>
+      <DialogTitle
+        sx={(theme) => ({
+          color: theme.palette.primary.contrastText,
+        })
+        }>Create a Campaign</DialogTitle>
       <DialogContent>
         <TextField
           label={"Campaign Name"}
@@ -48,11 +52,15 @@ export function CreateCampaignDialog(props: CreateCampaignDialogProps) {
         />
       </DialogContent>
       <DialogActions>
-        <Button disabled={loading} onClick={() => handleClose()}>
+        <Button disabled={loading} sx={(theme) => ({
+          color: theme.palette.primary.contrastText,
+        })
+        }onClick={() => handleClose()}>
           Cancel
         </Button>
         <LoadingButton
           endIcon={<SaveIcon />}
+          sx={{ color : "#d8d4cf" }}
           loading={loading}
           loadingPosition={"end"}
           variant={"contained"}

@@ -13,7 +13,7 @@ export function PageHeader(props: PageHeaderProps) {
 
   return (
     <>
-      <Box
+      <Box id="header"
         sx={(theme) => ({
           color: theme.palette.primary.contrastText,
           pt: 4,
@@ -40,6 +40,9 @@ export function PageHeader(props: PageHeaderProps) {
                 <Typography
                   variant={"h4"}
                   component={"h1"}
+                  sx={(theme) => ({
+                    color: "white",
+                  })}
                   fontFamily={(theme) => theme.fontFamilyTitle}
                 >
                   {label}
@@ -65,7 +68,7 @@ export function PageHeader(props: PageHeaderProps) {
       </Box>
       <Box
         sx={(theme) => ({
-          backgroundImage: 'url("/assets/border.svg")',
+          //backgroundImage: 'url("/assets/border.svg")',
           position: "relative",
           top: theme.spacing(12),
           mt: "-1px",

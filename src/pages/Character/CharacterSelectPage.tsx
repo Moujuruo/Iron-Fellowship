@@ -97,6 +97,9 @@ export function CharacterSelectPage() {
                 component={Link}
                 to={constructCharacterPath(CHARACTER_ROUTES.CREATE)}
                 variant={"contained"}
+                sx={(theme) => ({
+                  color: "white",
+                })}
                 endIcon={<AddCharacterIcon />}
               >
                 Create a Character

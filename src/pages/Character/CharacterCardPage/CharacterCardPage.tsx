@@ -228,6 +228,7 @@ export function CharacterCardPage() {
                       <Typography
                         variant={"h5"}
                         color={(theme) => theme.palette.grey[200]}
+                        //color={(theme) => theme.palette.primary.contrastText}
                         fontFamily={(theme) => theme.fontFamilyTitle}
                       >
                         Doubles

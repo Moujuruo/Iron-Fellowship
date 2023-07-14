@@ -7,7 +7,11 @@ import {
   Toolbar,
   Typography,
   useTheme,
+  IconButton,
+
 } from "@mui/material";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Link, useLocation } from "react-router-dom";
 import { AUTH_STATE, useAuth } from "../../providers/AuthProvider";
 import {
@@ -18,13 +22,16 @@ import {
 } from "../../routes";
 import { LoginButton } from "./LoginButton";
 import { ReactComponent as IronFellowshipLogo } from "./iron-fellowship-logo.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HeaderMenu } from "./HeaderMenu";
 
 import CharacterIcon from "@mui/icons-material/Person";
 import CampaignIcon from "@mui/icons-material/Groups";
 import WorldIcon from "@mui/icons-material/Public";
 import CheckIcon from "@mui/icons-material/Person2"
+
+import { ThemeContext } from "../../providers/ThemeProvider";
+
 
 export function Header() {
   const theme = useTheme();
@@ -33,6 +40,8 @@ export function Header() {
   const path = useLocation().pathname;
 
   const [selectedTab, setSelectedTab] = useState<"character" | "campaign">();
+
+  const { toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (path.includes(CHARACTER_PREFIX)) {
@@ -57,7 +66,12 @@ export function Header() {
         >
           <Box display={"flex"} alignItems={"center"}>
             <IronFellowshipLogo width={32} height={32} />
-            <Typography fontFamily={"Staatliches"} variant={"h5"} ml={2}>
+            <Typography
+              fontFamily={"Staatliches"}
+              variant={"h5"}
+              ml={2}
+              color={"white"}
+            >
               Iron Fellowship
             </Typography>
           </Box>
@@ -66,22 +80,20 @@ export function Header() {
               <Hidden smDown>
                 <>
                   <Button
-                    // 点击的时候切换css样式到dark mode
-                    onClick={() => {
-                        let container = document.getElementById("container");
-                        if(container) {
-                          container.style.backgroundColor = "#000000";
-                        }
-                    }}
+                    // change to dark mode
+                    onClick={toggleTheme}
                     sx={{
                       color: "white",
                       "&:hover": {
                         backgroundColor: theme.palette.primary.dark,
                       },
                     }}
-                    endIcon={<CharacterIcon />}
+                    endIcon={<IconButton color="inherit">
+                      {theme.palette.primary.contrastText === '#000000' ? <Brightness7Icon /> : <Brightness4Icon />}
+                       {/* check if dark mode is on (use a stupid method) */}
+                    </IconButton>}
                   >
-                    DarK mode
+                    {theme.palette.primary.contrastText === '#000000' ? "light" : "dark"} mode
                   </Button>
                   <Button
                     component={Link}

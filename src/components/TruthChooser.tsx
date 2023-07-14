@@ -64,11 +64,12 @@ export function TruthChooser(props: TruthChooserProps) {
               height: "100%",
               p: 2,
               borderWidth: 2,
+              color: theme.palette.primary.contrastText,
               cursor: "pointer",
               borderColor:
                 selectedTruthOptionId === option.$id
                   ? theme.palette.secondary.light
-                  : undefined,
+                  : theme.palette.border.main,
             })}
           >
             <Box sx={{ width: "100%" }}>
@@ -88,6 +89,7 @@ export function TruthChooser(props: TruthChooserProps) {
               sx={(theme) => ({
                 backgroundColor: theme.palette.background.default,
                 borderRadius: theme.shape.borderRadius,
+                color: "green",
                 px: 1,
                 pb: 1,
                 m: -1,
@@ -111,16 +113,20 @@ export function TruthChooser(props: TruthChooserProps) {
             p: 2,
             height: "100%",
             borderWidth: 2,
+            
             borderColor:
               selectedTruthOptionId === customTruthId
                 ? theme.palette.secondary.light
-                : undefined,
+                : theme.palette.border.main,
           })}
           variant={"outlined"}
         >
           <Stack spacing={2}>
-            <Box display={"flex"} justifyContent={"space-between"}>
-              <Typography variant={"h6"}>Custom Truth</Typography>
+            <Box display={"flex"} justifyContent={"space-between"} 
+            >
+              <Typography variant={"h6"} 
+                sx={(theme) => ({ color: theme.palette.primary.contrastText })}
+              >Custom Truth</Typography>
               {selectedTruthOptionId === customTruthId && (
                 <CheckIcon color={"secondary"} />
               )}

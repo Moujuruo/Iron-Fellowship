@@ -79,6 +79,9 @@ export function WorldSelectPage() {
                 component={Link}
                 to={constructWorldPath(WORLD_ROUTES.CREATE)}
                 variant={"contained"}
+                sx={(theme) => ({
+                  color: "white",
+                })}
                 endIcon={<AddWorldIcon />}
               >
                 Create a World

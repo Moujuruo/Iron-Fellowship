@@ -20,42 +20,47 @@ export function MarkdownRenderer(props: MarkdownRendererProps) {
       children={markdown}
       remarkPlugins={[remarkGfm]}
       components={{
+        
         p: ({ children }) => (
           <Typography
             variant={"body2"}
             display={inlineParagraph ? "inline" : "block"}
-            color={
-              inheritColor
-                ? "inherit"
-                : (theme) =>
-                    inlineParagraph
-                      ? theme.palette.text.secondary
-                      : theme.palette.text.primary
-            }
+            // color={
+            //   inheritColor
+            //     ? "inherit"
+            //     : (theme) =>
+            //         inlineParagraph
+            //           ? theme.palette.text.secondary
+            //           : theme.palette.text.primary
+            // }
+            color={(theme) => theme.palette.primary.contrastText}
             py={inlineParagraph ? 0 : 1}
             textAlign={"left"}
           >
             {children}
           </Typography>
         ),
+        
         li: ({ children }) => (
           <Typography
             component={"li"}
             variant={"body2"}
-            color={
-              inheritColor
-                ? "inherit"
-                : (theme) =>
-                    inlineParagraph
-                      ? theme.palette.text.secondary
-                      : theme.palette.text.primary
-            }
+            // color={
+            //   inheritColor
+            //     ? "inherit"
+            //     : (theme) =>
+            //         inlineParagraph
+            //           ? theme.palette.text.secondary
+            //           : theme.palette.text.primary
+            // }
+            color={(theme) => theme.palette.primary.contrastText}
           >
             {children}
           </Typography>
         ),
+        
         ul: ({ children }) => (
-          <Box component={"ul"} pl={1.5}>
+          <Box component={"ul"} pl={1.5} color={(theme) => theme.palette.primary.contrastText}> 
             {children}
           </Box>
         ),
@@ -67,7 +72,7 @@ export function MarkdownRenderer(props: MarkdownRendererProps) {
             border={1}
             borderColor={(theme) => theme.palette.divider}
             borderRadius={(theme) => theme.shape.borderRadius}
-            sx={{ borderCollapse: "collapse" }}
+            sx={{ borderCollapse: "collapse"}}
           >
             {children}
           </Box>

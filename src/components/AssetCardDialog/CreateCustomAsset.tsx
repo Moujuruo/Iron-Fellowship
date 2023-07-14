@@ -261,7 +261,7 @@ export function CreateCustomAsset(props: CreateCustomAssetProps) {
                   helperText={form.touched.assetType && form.errors.assetType}
                   fullWidth
                 >
-                  <MenuItem value={AssetType.Companion}>Companion</MenuItem>
+                  <MenuItem value={AssetType.Companion} >Companion</MenuItem>
                   <MenuItem value={AssetType.Path}>Path</MenuItem>
                   <MenuItem value={AssetType.CombatTalent}>
                     Combat Talent

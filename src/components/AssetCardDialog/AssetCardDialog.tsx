@@ -8,7 +8,7 @@ import {
   Grid,
   Tab,
   Tabs,
-  Typography,
+  useTheme
 } from "@mui/material";
 import { useState } from "react";
 // import { companions, paths, combatTalents, rituals } from "../../data/assets";
@@ -31,6 +31,8 @@ export function AssetCardDialog(props: AssetCardDialogProps) {
   const { open, loading, handleClose, handleAssetSelection } = props;
 
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const theme = useTheme();
 
   const onAssetSelect = (asset: Asset, isCustom?: boolean) => {
     const inputs: { [key: string]: string } = {};
@@ -59,7 +61,12 @@ export function AssetCardDialog(props: AssetCardDialogProps) {
 
   return (
     <Dialog open={open} onClose={() => handleClose()} maxWidth={"md"} fullWidth>
-      <DialogTitle>Select an asset</DialogTitle>
+      <DialogTitle 
+        sx={(theme) => (
+          {
+            color: theme.palette.primary.contrastText,
+          })}
+      >Select an asset</DialogTitle>
       <DialogContent>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -69,23 +76,32 @@ export function AssetCardDialog(props: AssetCardDialogProps) {
             scrollButtons={"auto"}
           >
             {Object.values(assetGroups).map((group, index) => (
-              <Tab label={group.Title.Standard} key={index} />
+              <Tab label={group.Title.Standard} key={index} sx={(theme) => (
+                {
+                  color: theme.palette.primary.contrastText,
+                })} />
             ))}
-            <Tab label={"custom"} />
+            <Tab label={"custom"} sx={(theme) => (
+              {
+                color: theme.palette.primary.contrastText,
+              })} />
           </Tabs>
         </Box>
         <Box py={1}>
           {selectedTab < assetGroups.length ? (
             <>
-              <MarkdownRenderer
+              <MarkdownRenderer 
                 markdown={assetGroups[selectedTab].Description}
               />
               <Grid container spacing={1} mt={2}>
                 {Object.values(assetGroups[selectedTab].Assets).map(
                   (asset, index) => (
-                    <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Grid item xs={12} sm={6} md={4} key={index} >
                       <AssetCard
                         assetId={asset.$id}
+                        sx={                                // change the color of h5 and b
+                          {color : theme.palette.primary.contrastText,}
+                        }
                         readOnly
                         actions={
                           <Button

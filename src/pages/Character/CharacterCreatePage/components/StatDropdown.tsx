@@ -5,6 +5,7 @@ import {
   SxProps,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useField } from "formik";
 import { Stat } from "types/stats.enum";
@@ -23,6 +24,7 @@ export interface StatDropdownProps {
 }
 
 export function StatDropdown(props: StatDropdownProps) {
+  const theme = useTheme();
   const { stat, label, remainingOptions, handleRemainingOptionsChange, sx } =
     props;
 
@@ -61,7 +63,7 @@ export function StatDropdown(props: StatDropdownProps) {
         variant={"subtitle1"}
         sx={(theme) => ({
           fontFamily: theme.fontFamilyTitle,
-          color: theme.palette.grey[600],
+          color: theme.palette.grey[600], // should modify
           backgroundColor: theme.palette.grey[100],
         })}
       >
@@ -74,12 +76,14 @@ export function StatDropdown(props: StatDropdownProps) {
           variant={"outlined"}
           value={value ?? -1}
           onChange={(evt) => handleChange(evt.target.value)}
-          sx={{ width: 100 }}
+          sx={{ width: 100, backgroundColor: theme.palette.background.paper }} // the color of option background
         >
-          <MenuItem value={-1}>--</MenuItem>
+          <MenuItem value={-1}  sx={{ color: theme.palette.primary.contrastText}} >--</MenuItem>
           {value !== undefined && <MenuItem value={value}>{value}</MenuItem>}
           {remainingOptions.map((option, index) => (
-            <MenuItem value={option} key={index}>
+            <MenuItem value={option} key={index} 
+              sx={{ color: theme.palette.primary.contrastText}} // the color of option text
+            >
               {`${option}`}
             </MenuItem>
           ))}

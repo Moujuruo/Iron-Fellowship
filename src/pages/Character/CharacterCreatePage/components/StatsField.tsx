@@ -32,7 +32,7 @@ export function StatsField() {
 
   return (
     <Box mt={2}>
-      <Typography color={(theme) => theme.palette.text.secondary}>
+      <Typography color={(theme) => theme.palette.primary.contrastText}>
         Select a number 1-3 for each stat.
       </Typography>
       <Box mt={0.5} display={"flex"} flexWrap={"wrap"}>

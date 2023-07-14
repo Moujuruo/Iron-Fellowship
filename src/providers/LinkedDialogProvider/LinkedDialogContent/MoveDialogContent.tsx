@@ -104,7 +104,12 @@ export function MoveDialogContent(props: MoveDialogContentProps) {
               <Button
                 key={oracle.$id}
                 variant={"outlined"}
-                sx={{ mr: 1, mb: 1 }}
+                sx={{ 
+                  mr: 1, 
+                  mb: 1,
+                }
+
+                }
                 onClick={() => rollOracleTable(oracle.$id)}
               >
                 Roll {oracle.Title.Standard.replace("Ask the Oracle: ", "")}

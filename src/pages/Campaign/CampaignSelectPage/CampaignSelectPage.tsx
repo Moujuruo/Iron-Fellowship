@@ -81,6 +81,9 @@ export function CampaignSelectPage() {
               <Button
                 onClick={() => setCreateCampaignDialogOpen(true)}
                 variant={"contained"}
+                sx={(theme) => ({
+                  color: "white",
+                })}
                 endIcon={<CreateCampaignIcon />}
               >
                 Create a Campaign
