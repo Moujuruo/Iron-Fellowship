@@ -27,6 +27,7 @@ export function LoginPage() {
               size={"large"}
               variant={"contained"}
               onClick={() => handleLoginWithGoogle()}
+              sx={{ color : "white"}}
             >
               Login with Google
             </Button>

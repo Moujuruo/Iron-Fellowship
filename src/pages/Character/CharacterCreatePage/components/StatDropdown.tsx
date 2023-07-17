@@ -79,7 +79,7 @@ export function StatDropdown(props: StatDropdownProps) {
           sx={{ width: 100, backgroundColor: theme.palette.background.paper }} // the color of option background
         >
           <MenuItem value={-1}  sx={{ color: theme.palette.primary.contrastText}} >--</MenuItem>
-          {value !== undefined && <MenuItem value={value}>{value}</MenuItem>}
+          {value !== undefined && <MenuItem value={value} >{value}</MenuItem>}
           {remainingOptions.map((option, index) => (
             <MenuItem value={option} key={index} 
               sx={{ color: theme.palette.primary.contrastText}} // the color of option text

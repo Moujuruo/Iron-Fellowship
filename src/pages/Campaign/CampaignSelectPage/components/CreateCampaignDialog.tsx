@@ -48,7 +48,13 @@ export function CreateCampaignDialog(props: CreateCampaignDialogProps) {
           label={"Campaign Name"}
           value={label}
           onChange={(evt) => setLabel(evt.target.value)}
-          sx={{ mt: 1 }}
+          sx={ (theme) => ({
+            mt: 1,
+            input: { color: theme.palette.primary.contrastText } ,
+            label: {color: theme.palette.primary.contrastText},
+            fieldset: { borderColor: theme.palette.border.main },
+          })
+          }
         />
       </DialogContent>
       <DialogActions>
