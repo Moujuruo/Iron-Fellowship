@@ -52,7 +52,7 @@ export function CreateCampaignDialog(props: CreateCampaignDialogProps) {
             mt: 1,
             input: { color: theme.palette.primary.contrastText } ,
             label: {color: theme.palette.primary.contrastText},
-            fieldset: { borderColor: theme.palette.border.main },
+            fieldset: { borderColor: theme.palette.border.main },   // the method of changing border color
           })
           }
         />
