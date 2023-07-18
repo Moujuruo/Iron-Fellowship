@@ -37,13 +37,13 @@ export function AssetsSection() {
     <>
       <SectionHeading breakContainer label={"Assets"} sx={{ mt: 4 }} />
       <Stack>
-        <Typography color={"GrayText"}>
+        <Typography color={(theme) => theme.palette.primary.contrastText}>
           Choose three Assets to start your story!
         </Typography>
 
         <Grid
           sx={(theme) => ({
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: theme.palette.grey[100], // should modify
             pr: 2,
             ml: -1,
             pb: 2,

@@ -38,21 +38,35 @@ export function CreateCampaignDialog(props: CreateCampaignDialogProps) {
 
   return (
     <Dialog open={open} onClose={() => handleClose}>
-      <DialogTitle>Create a Campaign</DialogTitle>
+      <DialogTitle
+        sx={(theme) => ({
+          color: theme.palette.primary.contrastText,
+        })
+        }>Create a Campaign</DialogTitle>
       <DialogContent>
         <TextField
           label={"Campaign Name"}
           value={label}
           onChange={(evt) => setLabel(evt.target.value)}
-          sx={{ mt: 1 }}
+          sx={ (theme) => ({
+            mt: 1,
+            input: { color: theme.palette.primary.contrastText } ,
+            label: {color: theme.palette.primary.contrastText},
+            fieldset: { borderColor: theme.palette.border.main },   // the method of changing border color
+          })
+          }
         />
       </DialogContent>
       <DialogActions>
-        <Button disabled={loading} onClick={() => handleClose()}>
+        <Button disabled={loading} sx={(theme) => ({
+          color: theme.palette.primary.contrastText,
+        })
+        }onClick={() => handleClose()}>
           Cancel
         </Button>
         <LoadingButton
           endIcon={<SaveIcon />}
+          sx={{ color : "#d8d4cf" }}
           loading={loading}
           loadingPosition={"end"}
           variant={"contained"}

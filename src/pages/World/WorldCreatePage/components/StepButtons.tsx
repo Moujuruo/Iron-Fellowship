@@ -45,12 +45,18 @@ export function StepButtons() {
         onClick={
           currentStep === truths.length ? () => onSubmit() : () => handleNext()
         }
+        sx={ (theme) => ({
+          color: "white",
+        })}
       >
         {currentStep === truths.length ? "Finish" : "Next"}
       </Button>
       <Button
         disabled={currentStep === 0 || loading}
         onClick={() => handlePrevious()}
+        sx={ (theme) => ({
+          color : theme.palette.primary.contrastText === "#000000" ? "grey" : "white"
+        })}
       >
         Back
       </Button>

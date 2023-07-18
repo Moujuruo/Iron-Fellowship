@@ -1,4 +1,4 @@
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Paper, TextField, useTheme } from "@mui/material";
 import { Formik } from "formik";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { SectionHeading } from "components/SectionHeading";
@@ -39,6 +39,7 @@ const nameOracles = [
 
 export function CharacterCreatePage() {
   const campaignId = useSearchParams()[0].get("campaignId");
+  const theme = useTheme();
 
   const navigate = useNavigate();
   const { rollOracleTable } = useRoller();
@@ -120,6 +121,7 @@ export function CharacterCreatePage() {
               <SectionHeading breakContainer label={"Character Details"} />
               <div>
                 <TextFieldWithOracle
+                // should modify
                   getOracleValue={() => handleOracleRoll() ?? ""}
                   label={"Name"}
                   name={"name"}
@@ -127,7 +129,14 @@ export function CharacterCreatePage() {
                   onChange={(value) => form.setFieldValue("name", value)}
                   error={form.touched.name && !!form.errors.name}
                   helperText={form.touched.name && form.errors.name}
-                  sx={{ maxWidth: 350, mt: 2 }}
+                  
+                  sx={{ 
+                    input: { color: theme.palette.primary.contrastText } ,
+                    label: {color: theme.palette.primary.contrastText},
+                    fieldset: { borderColor: theme.palette.border.main },
+                    maxWidth: 350, mt: 2 
+                  }}
+                  
                   fullWidth
                 />
               </div>
@@ -138,6 +147,7 @@ export function CharacterCreatePage() {
                   type={"submit"}
                   variant={"contained"}
                   disabled={loading}
+                  sx={{color: "white"}}
                 >
                   Create Character
                 </Button>

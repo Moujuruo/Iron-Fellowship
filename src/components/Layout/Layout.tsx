@@ -34,7 +34,7 @@ export function Layout(props: LayoutProps) {
   }
 
   return (
-    <Box
+    <Box id="backimage"
       minHeight={"100vh"}
       display={"flex"}
       flexDirection={"column"}

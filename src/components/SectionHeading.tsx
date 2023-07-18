@@ -13,7 +13,7 @@ export function SectionHeading(props: SectionHeadingProps) {
 
   return (
     <Box
-      bgcolor={(theme) => theme.palette.grey[200]}
+      bgcolor={(theme) => theme.palette.background.background}
       py={0.5}
       display={"flex"}
       justifyContent={"space-between"}
@@ -21,7 +21,7 @@ export function SectionHeading(props: SectionHeadingProps) {
         (theme) => ({
           flexDirection: "row",
           alignItems: "center",
-
+          
           marginX: breakContainer ? -3 : 0,
           paddingX: 3,
 
@@ -38,7 +38,7 @@ export function SectionHeading(props: SectionHeadingProps) {
       <Typography
         variant={"h6"}
         fontFamily={(theme) => theme.fontFamilyTitle}
-        color={(theme) => theme.palette.text.secondary}
+        color={(theme) => theme.palette.grey[50]}
       >
         {label}
       </Typography>

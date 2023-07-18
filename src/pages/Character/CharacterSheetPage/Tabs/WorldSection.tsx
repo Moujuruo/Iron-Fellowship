@@ -124,6 +124,9 @@ export function WorldSection() {
                   color={"primary"}
                   component={Link}
                   to={constructWorldPath(WORLD_ROUTES.CREATE)}
+                  sx={(theme) => ({
+                    color: "white",
+                  })}
                 >
                   Create a World
                 </Button>

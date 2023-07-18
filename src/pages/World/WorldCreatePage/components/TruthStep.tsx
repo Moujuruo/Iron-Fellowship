@@ -1,4 +1,5 @@
-import { StepButton, StepContent, StepLabel, Typography } from "@mui/material";
+import { StepButton, StepContent, StepLabel, Typography, useTheme } from "@mui/material";
+
 import { TruthClassic } from "dataforged";
 import { TRUTH_IDS } from "types/World.type";
 import { useWorldCreateStore } from "../worldCreate.store";
@@ -10,8 +11,13 @@ export interface TruthStepProps {
   index: number;
 }
 
+
+
 export function TruthStep(props: TruthStepProps) {
   const { truth, index } = props;
+
+
+  const theme = useTheme();
 
   const truthId = truth.$id as TRUTH_IDS;
 
@@ -52,8 +58,18 @@ export function TruthStep(props: TruthStepProps) {
           )
         }
       >
-        <StepLabel error={stepState.touched && !!stepState.errorMessage}>
-          Truths: {truth.Title.Standard}
+        <StepLabel 
+          
+          error={stepState.touched && !!stepState.errorMessage}
+        > 
+          <Typography 
+            sx={ (theme) => ({
+              color: theme.palette.primary.contrastText,
+              })
+            }
+          >
+            Truths: {truth.Title.Standard} 
+          </Typography>
         </StepLabel>
       </StepButton>
       <StepContent>

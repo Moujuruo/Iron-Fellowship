@@ -24,9 +24,16 @@ export function AddAssetCard(props: AddAssetCardProps) {
           justifyContent: "center",
           flexDirection: "column",
           height: "100%",
+          backgroundColor: "theme.palette.background.paper"
         }}
       >
-        <Typography variant={"h6"} color={"GrayText"}>
+        <Typography variant={"h6"}
+          sx={(theme) => (
+            {
+              color: theme.palette.primary.contrastText,
+            })}
+        >
+          {/* should modify */}
           Add Asset
         </Typography>
         <AddIcon
